@@ -1,0 +1,5 @@
+Spring Security:
+https://www.marcobehler.com/guides/spring-security
+
+JWT:
+https://www.freecodecamp.org/news/how-to-setup-jwt-authorization-and-authentication-in-spring/
