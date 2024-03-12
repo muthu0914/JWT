@@ -1,5 +1,6 @@
 package com.qwerty.learn.controller;
 
+import java.util.Map;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.qwerty.learn.domain.User;
+import com.qwerty.learn.dto.ResponseDTO;
 import com.qwerty.learn.repository.UserRepository;
 import com.qwerty.learn.service.UserService;
 
@@ -37,7 +39,7 @@ public class UserController {
 	}
 
 	@PostMapping("/login")
-	public ResponseEntity<?> login(@RequestBody User userDTO) {
+	public ResponseEntity<ResponseDTO<Map<String,Object>>> login(@RequestBody User userDTO) {
 		return new ResponseEntity<>(userService.login(userDTO),HttpStatus.OK);
 	}
 

@@ -18,6 +18,7 @@ import org.springframework.stereotype.Service;
 
 import com.qwerty.learn.domain.CustomUserDetails;
 import com.qwerty.learn.domain.User;
+import com.qwerty.learn.dto.ResponseDTO;
 import com.qwerty.learn.repository.UserRepository;
 import com.qwerty.learn.service.UserService;
 import com.qwerty.learn.utils.JwtUtil;
@@ -51,7 +52,7 @@ public class UserDetailsServiceImpl implements UserDetailsService,UserService {
 	
 
 	@Override
-	public Map<String, Object> login(User user) {
+	public ResponseDTO<Map<String, Object>> login(User user) {
 		Map<String, Object> resultBody = new HashMap<>();
 		try {
 			Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
@@ -67,7 +68,7 @@ public class UserDetailsServiceImpl implements UserDetailsService,UserService {
 		} catch (AuthenticationException e) {
 			e.printStackTrace();
 		}
-		return resultBody;
+		return new ResponseDTO<>(false,200,"Login Successfull",resultBody);
 	}
 
 }
